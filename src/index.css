@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  /* Accent — burnt orange (#c36222) */
+  --color-gold-400: #d97f3f;
+  --color-gold-500: #c36222;
+  --color-gold-600: #9c4d1a;
+  /* Surfaces — deep navy family (#1a2642) */
+  --color-dark-800: #24345c;
+  --color-dark-900: #1a2642;
+  --color-dark-950: #0e1526;
+  --color-black: #0b101d;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --gold: #c36222;
+    --dark: #1a2642;
+  }
+}
+
+.bg-pattern {
+  background-image: linear-gradient(rgba(195, 98, 34, 0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(195, 98, 34, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Leaflet Dark Map Overrides */
+.leaflet-container {
+  background: #0e1526 !important;
+  font-family: var(--font-sans) !important;
+}
+.leaflet-tooltip.dark-tooltip {
+  background-color: rgba(14, 21, 38, 0.95) !important;
+  border: 1px solid rgba(195, 98, 34, 0.4) !important;
+  color: white !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8) !important;
+  border-radius: 2px !important;
+  backdrop-filter: blur(8px) !important;
+}
+.leaflet-tooltip-top.dark-tooltip::before {
+  border-top-color: rgba(195, 98, 34, 0.4) !important;
+}
+.leaflet-tooltip-bottom.dark-tooltip::before {
+  border-bottom-color: rgba(195, 98, 34, 0.4) !important;
+}
+.leaflet-tooltip-left.dark-tooltip::before {
+  border-left-color: rgba(195, 98, 34, 0.4) !important;
+}
+.leaflet-tooltip-right.dark-tooltip::before {
+  border-right-color: rgba(195, 98, 34, 0.4) !important;
+}
+
+/* Force hide all iOS and mobile video controls and play buttons */
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
