@@ -115,7 +115,7 @@ export default function Hero() {
       </div>
 
       {/* County caption — shifts with the background carousel */}
-      <div className="absolute bottom-6 left-4 md:left-10 z-10 hidden sm:flex items-center gap-2 pointer-events-none">
+      <div className="absolute bottom-6 left-4 md:left-10 z-10 flex items-center gap-2 pointer-events-none">
         <MapPin className="w-3.5 h-3.5 text-gold-500 flex-shrink-0" />
         <AnimatePresence mode="wait">
           <motion.span
@@ -147,16 +147,13 @@ export default function Hero() {
             <span className="h-3 w-px bg-white/20"></span>
             <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.25em] text-white/70">24/7 Dispatch</span>
           </div>
-          <h1 className="text-3xl md:text-5xl lg:text-[4.25rem] xl:text-[5rem] font-black uppercase tracking-tighter text-white mb-6 leading-[0.95]">
+          <h1 className="text-4xl md:text-5xl lg:text-[4.25rem] xl:text-[5rem] font-black uppercase tracking-tighter text-white mb-5 leading-[0.95]">
             Get Your Loved One<br />
             <span className="text-gold-500">Home, Fast.</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-8">
-            <strong className="text-white font-bold">Fast answers. Clear steps. Help right now.</strong><br className="hidden sm:block" />
-            <span className="mt-2 inline-block">We're here when it matters most — confidential, respectful bail bond help, 24 hours a day.</span><br />
-            <span className="mt-4 inline-block text-white font-black text-lg lg:text-xl tracking-widest border-l-4 border-gold-500 pl-4 pr-6 py-2 bg-dark-950/50">
-              {siteConfig.serviceAreaShort}
-            </span>
+          <p className="max-w-lg mb-8">
+            <strong className="block text-white font-semibold text-lg md:text-xl mb-1.5">Fast answers. Clear steps. Help right now.</strong>
+            <span className="text-sm md:text-base text-slate-300 leading-relaxed">Confidential, 24/7 bail help across Franklin County &amp; beyond.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
