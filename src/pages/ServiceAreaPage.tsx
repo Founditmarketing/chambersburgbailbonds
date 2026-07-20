@@ -41,19 +41,28 @@ export default function ServiceAreaPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: (idx % 6) * 0.05 }}
-                  className="bg-dark-900 border border-white/5 p-5 rounded-sm flex items-center gap-4 hover:border-gold-500/40 transition-colors"
+                  className="card card-interactive relative overflow-hidden h-40 group"
                 >
-                  <MapPin className="w-5 h-5 text-gold-500 flex-shrink-0" />
-                  <div>
-                    <p className="text-white font-bold text-sm uppercase tracking-wide">{c.county}</p>
-                    <p className="text-slate-500 text-xs">{c.seat}</p>
+                  <img
+                    src={`/counties/${c.slug}.jpg`}
+                    alt={`${c.county} — ${c.seat}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/70 to-dark-950/20" />
+                  <div className="relative z-10 h-full flex flex-col justify-end p-5">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                      <p className="text-white font-bold text-sm uppercase tracking-wide">{c.county}</p>
+                    </div>
+                    <p className="text-slate-300 text-xs mt-1 pl-6">{c.seat}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
             <div className="mt-16 text-center">
-              <a href={siteConfig.phoneHref} className="inline-flex items-center gap-2 bg-gold-500 text-black px-8 py-4 font-black uppercase tracking-widest text-sm hover:bg-white transition-colors">
+              <a href={siteConfig.phoneHref} className="btn btn-primary btn-lg">
                 <Phone className="w-4 h-4" /> Call {siteConfig.phoneDisplay}
               </a>
             </div>

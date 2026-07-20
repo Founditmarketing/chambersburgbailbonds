@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { motion, AnimatePresence, useScroll } from 'motion/react';
-import { Phone, Mail, X, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Phone, Mail, MessageSquare, X, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
 import { submitLead } from '../lib/leads';
 
@@ -45,7 +45,7 @@ export default function MobileStickyFooter() {
     }
   };
 
-  const inputClass = 'peer w-full bg-white/5 border border-white/10 rounded-sm p-3 pt-5 text-white placeholder-transparent focus:border-gold-500 focus:bg-white/10 focus:outline-none transition-all duration-300';
+  const inputClass = 'peer w-full bg-white/5 border border-white/10 rounded-lg p-3 pt-5 text-white placeholder-transparent focus:border-gold-500 focus:bg-white/10 focus:outline-none transition-all duration-300';
   const labelClass = 'absolute left-4 top-2 text-[10px] uppercase text-gold-500 font-bold tracking-widest transition-all peer-placeholder-shown:text-[11px] peer-placeholder-shown:top-4 peer-placeholder-shown:text-white/40 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-gold-500 pointer-events-none';
 
   return (
@@ -53,37 +53,59 @@ export default function MobileStickyFooter() {
       {/* Sticky Bottom Bar */}
       <AnimatePresence>
         {showFooter && (
-          <motion.div 
-            initial={{ y: '100%' }}
+          <motion.div
+            initial={{ y: '110%' }}
             animate={{ y: 0 }}
-            exit={{ y: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed bottom-0 left-0 right-0 z-[100] lg:hidden bg-dark-950 border-t border-gold-500/20 flex items-center justify-between p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
+            exit={{ y: '110%' }}
+            transition={{ type: 'spring', damping: 26, stiffness: 220 }}
+            className="fixed bottom-0 left-0 right-0 z-[100] lg:hidden bg-dark-950/95 backdrop-blur-md border-t border-gold-500/30 shadow-[0_-12px_30px_-10px_rgba(0,0,0,0.7)]"
           >
-            <a
-              href={siteConfig.phoneHref}
-              className="relative overflow-hidden group flex-1 flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white font-black uppercase tracking-widest text-[10px] py-4 transition-all mr-3 hover:border-gold-500"
-            >
-              <div className="absolute inset-0 w-full h-full bg-gold-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
-              <span className="relative z-10 flex items-center gap-2 group-hover:text-black transition-colors duration-500">
-                <Phone className="w-4 h-4" />
-                Call Now
+            {/* Live status strip */}
+            <div className="flex items-center justify-center gap-2 border-b border-white/10 bg-gold-500/5 py-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
               </span>
-              <div className="absolute top-1 left-1 w-1.5 h-1.5 border-t-2 border-l-2 border-white/40 group-hover:border-black/40 z-10 transition-colors duration-500 pointer-events-none group-hover:scale-125"></div>
-              <div className="absolute bottom-1 right-1 w-1.5 h-1.5 border-b-2 border-r-2 border-white/40 group-hover:border-black/40 z-10 transition-colors duration-500 pointer-events-none group-hover:scale-125"></div>
-            </a>
-            <button 
-              onClick={() => { setIsOpen(true); setStatus('idle'); }}
-              className="relative overflow-hidden group flex-1 flex items-center justify-center gap-2 bg-gold-500 text-black font-black uppercase tracking-widest text-[10px] py-4 shadow-[0_0_15px_rgba(195,98,34,0.3)] transition-all"
-            >
-              <div className="absolute inset-0 w-full h-full bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
-              <span className="relative z-10 flex items-center gap-2 group-hover:text-black transition-colors duration-500">
-                <Mail className="w-4 h-4" />
-                Contact Form
+              <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/70">
+                Open Now — 24/7 Bail Line
               </span>
-              <div className="absolute top-1 left-1 w-1.5 h-1.5 border-t-2 border-l-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-              <div className="absolute bottom-1 right-1 w-1.5 h-1.5 border-b-2 border-r-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-            </button>
+            </div>
+
+            {/* Action row */}
+            <div className="flex items-stretch gap-2 p-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))]">
+              {/* Primary: Call */}
+              <a
+                href={siteConfig.phoneHref}
+                aria-label={`Call ${siteConfig.phoneDisplay} now`}
+                className="flex-[3] flex items-center justify-center gap-3 bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-white py-3 rounded-xl shadow-[0_10px_24px_-8px_rgba(195,98,34,0.75)] transition-transform active:scale-[0.98]"
+              >
+                <Phone className="w-5 h-5 flex-shrink-0" fill="currentColor" strokeWidth={0} />
+                <span className="flex flex-col leading-none text-left">
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] opacity-80">Call 24/7</span>
+                  <span className="text-[15px] font-black tracking-tight mt-0.5">{siteConfig.phoneDisplay}</span>
+                </span>
+              </a>
+
+              {/* Secondary: Text */}
+              <a
+                href={siteConfig.smsHref}
+                aria-label={`Text ${siteConfig.phoneDisplay}`}
+                className="flex-1 flex flex-col items-center justify-center gap-1 bg-white/5 border border-white/15 text-white rounded-xl py-2 transition-colors active:border-gold-500 active:text-gold-500"
+              >
+                <MessageSquare className="w-5 h-5" />
+                <span className="text-[9px] font-black uppercase tracking-[0.2em]">Text</span>
+              </a>
+
+              {/* Secondary: Form */}
+              <button
+                onClick={() => { setIsOpen(true); setStatus('idle'); }}
+                aria-label="Open contact form"
+                className="flex-1 flex flex-col items-center justify-center gap-1 bg-white/5 border border-white/15 text-white rounded-xl py-2 transition-colors active:border-gold-500 active:text-gold-500"
+              >
+                <Mail className="w-5 h-5" />
+                <span className="text-[9px] font-black uppercase tracking-[0.2em]">Form</span>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -166,7 +188,7 @@ export default function MobileStickyFooter() {
                       {/* Service */}
                       <div className="relative group">
                         <label htmlFor="mobileService" className="absolute left-4 top-2 text-[10px] uppercase text-gold-500 font-bold tracking-widest pointer-events-none z-10">Services Needed</label>
-                        <select id="mobileService" name="service" value={formData.service} onChange={handleChange} defaultValue="" className="w-full bg-white/5 border border-white/10 rounded-sm p-3 pt-5 text-white focus:border-gold-500 focus:bg-white/10 focus:outline-none transition-all duration-300 appearance-none cursor-pointer">
+                        <select id="mobileService" name="service" value={formData.service} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-lg p-3 pt-5 text-white focus:border-gold-500 focus:bg-white/10 focus:outline-none transition-all duration-300 appearance-none cursor-pointer">
                           <option value="" disabled className="bg-dark-950">Select an Option</option>
                           <option value="bail-bonds" className="bg-dark-950">Bail Bonds</option>
                           <option value="payment-plans" className="bg-dark-950">Payment Plans</option>
@@ -181,7 +203,7 @@ export default function MobileStickyFooter() {
 
                       {/* Message */}
                       <div className="relative group flex-grow flex flex-col min-h-[80px]">
-                        <textarea id="mobileMessage" name="message" value={formData.message} onChange={handleChange} required className="peer w-full h-full min-h-[60px] bg-white/5 border border-white/10 rounded-sm p-3 pt-5 text-white placeholder-transparent focus:border-gold-500 focus:bg-white/10 focus:outline-none transition-all duration-300 resize-none" placeholder="Message"></textarea>
+                        <textarea id="mobileMessage" name="message" value={formData.message} onChange={handleChange} required className="peer w-full h-full min-h-[60px] bg-white/5 border border-white/10 rounded-lg p-3 pt-5 text-white placeholder-transparent focus:border-gold-500 focus:bg-white/10 focus:outline-none transition-all duration-300 resize-none" placeholder="Message"></textarea>
                         <label htmlFor="mobileMessage" className={labelClass}>Message</label>
                       </div>
 
@@ -196,15 +218,12 @@ export default function MobileStickyFooter() {
                       </AnimatePresence>
 
                       {/* Submit */}
-                      <button type="submit" disabled={status === 'loading'} className="relative overflow-hidden group bg-gold-500 text-black p-4 font-black uppercase tracking-widest text-sm transition-all duration-300 mt-4 w-full flex-shrink-0 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
-                        <div className="absolute inset-0 w-full h-full bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
+                      <button type="submit" disabled={status === 'loading'} className="btn btn-primary btn-md mt-4 w-full flex-shrink-0 disabled:opacity-70 disabled:cursor-not-allowed">
                         {status === 'loading' ? (
-                          <><Loader2 className="w-4 h-4 relative z-10 animate-spin" /><span className="relative z-10">Sending…</span></>
+                          <><Loader2 className="w-4 h-4 animate-spin" />Sending…</>
                         ) : (
-                          <span className="relative z-10 group-hover:text-black transition-colors duration-500">Request Bail Now</span>
+                          <>Request Bail Now</>
                         )}
-                        <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-                        <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
                       </button>
                     </motion.form>
                   )}

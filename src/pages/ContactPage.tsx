@@ -46,7 +46,7 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    'peer w-full bg-dark-950 border border-white/10 rounded-sm p-4 pt-7 text-white placeholder-transparent focus:border-gold-500 focus:bg-dark-950 focus:outline-none transition-all duration-300';
+    'peer w-full bg-dark-950 border border-white/10 rounded-lg p-4 pt-7 text-white placeholder-transparent focus:border-gold-500 focus:bg-dark-950 focus:outline-none transition-all duration-300';
   const labelClass =
     'absolute left-4 top-2 text-[10px] uppercase text-gold-500 font-bold tracking-widest transition-all peer-placeholder-shown:text-[11px] peer-placeholder-shown:top-4 peer-placeholder-shown:text-white/40 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-gold-500 pointer-events-none';
 
@@ -139,7 +139,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-4 pt-8 border-t border-white/5 bg-dark-900 border border-white/5 p-6 rounded-sm"
+              className="card mt-4 p-6"
             >
               <p className="text-[10px] uppercase tracking-[0.2em] text-gold-500 font-bold mb-2">Confidential & Judgment-Free</p>
               <p className="text-slate-400 text-sm leading-relaxed">
@@ -153,7 +153,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative bg-dark-900 border border-white/5 p-8 md:p-12 shadow-2xl overflow-hidden rounded-sm"
+            className="card p-8 md:p-12 overflow-hidden"
           >
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 blur-[100px] pointer-events-none rounded-full" />
@@ -244,7 +244,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="peer w-full min-h-[150px] bg-dark-950 border border-white/10 rounded-sm p-4 pt-7 text-white placeholder-transparent focus:border-gold-500 focus:bg-dark-950 focus:outline-none transition-all duration-300 resize-none"
+                      className="peer w-full min-h-[150px] bg-dark-950 border border-white/10 rounded-lg p-4 pt-7 text-white placeholder-transparent focus:border-gold-500 focus:bg-dark-950 focus:outline-none transition-all duration-300 resize-none"
                       placeholder="How can we help?"
                     ></textarea>
                     <label htmlFor="contactMessage" className={labelClass}>Who needs help, and where?</label>
@@ -269,22 +269,19 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="relative overflow-hidden group bg-gold-500 text-black p-5 font-black uppercase tracking-widest text-sm transition-all duration-300 mt-2 flex items-center justify-center gap-3 w-full lg:w-max ml-auto disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="btn btn-primary btn-lg mt-2 w-full lg:w-max ml-auto disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <div className="absolute inset-0 w-full h-full bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
                     {status === 'loading' ? (
                       <>
-                        <Loader2 className="w-4 h-4 relative z-10 animate-spin" />
-                        <span className="relative z-10">Sending…</span>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending…
                       </>
                     ) : (
                       <>
-                        <span className="relative z-10 group-hover:text-black transition-colors duration-500">Send Secure Message</span>
-                        <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                        Send Secure Message
+                        <ArrowRight className="w-4 h-4" />
                       </>
                     )}
-                    <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-                    <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
                   </button>
                 </motion.form>
               )}

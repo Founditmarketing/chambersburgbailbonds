@@ -34,7 +34,7 @@ export default function Footer() {
           <div className="flex flex-col">
             <div className="flex items-center space-x-3 mb-6">
               <div className="leading-none">
-                <span className="text-2xl font-black uppercase tracking-tighter text-white">CHAMBERSBURG <span className="text-gold-500">BAIL BONDS</span></span>
+                <span className="font-display text-2xl font-black uppercase tracking-tighter text-white">CHAMBERSBURG <span className="text-gold-500">BAIL BONDS</span></span>
                 <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-1">Franklin County, PA</span>
               </div>
             </div>
@@ -98,14 +98,13 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div className="bg-dark-950 border border-gold-500/20 p-6 relative group overflow-hidden mt-auto">
-              <div className="absolute inset-0 w-full h-full bg-gold-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
-              <div className="relative z-10 flex flex-col items-center text-center">
+            <div className="card p-6 mt-auto">
+              <div className="flex flex-col items-center text-center">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                  <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest group-hover:text-black/70 transition-colors duration-500">Open Now · 24/7</p>
+                  <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Open Now · 24/7</p>
                 </div>
-                <a href={siteConfig.phoneHref} className="text-white text-xl font-black group-hover:text-black transition-colors duration-500">
+                <a href={siteConfig.phoneHref} className="text-white text-xl font-black">
                   {siteConfig.phoneDisplay}
                 </a>
               </div>

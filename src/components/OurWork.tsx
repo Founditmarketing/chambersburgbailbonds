@@ -59,14 +59,9 @@ export default function OurWork() {
           </p>
 
           <div>
-            <Link to="/faq" className="relative overflow-hidden group bg-transparent border-2 border-dark-950 text-dark-950 px-10 py-5 font-black uppercase tracking-widest transition-all duration-300 text-sm inline-flex items-center gap-2">
-              <div className="absolute inset-0 w-full h-full bg-dark-950 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
-              <span className="relative z-10 group-hover:text-gold-500 transition-colors duration-500 flex items-center gap-2">
-                Got Questions?
-                <ChevronRight className="w-5 h-5" />
-              </span>
-              <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-dark-950/40 group-hover:border-gold-500/40 z-10 transition-colors duration-500 pointer-events-none group-hover:scale-125"></div>
-              <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-dark-950/40 group-hover:border-gold-500/40 z-10 transition-colors duration-500 pointer-events-none group-hover:scale-125"></div>
+            <Link to="/faq" className="btn btn-dark btn-lg">
+              Got Questions?
+              <ChevronRight className="w-5 h-5" />
             </Link>
           </div>
         </motion.div>
@@ -83,32 +78,23 @@ export default function OurWork() {
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             return (
-              <motion.div 
+              <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="group relative"
               >
-                <Link to="/contact" className="block relative overflow-hidden border border-gold-500 bg-dark-900 py-5 px-6 cursor-pointer transition-colors duration-500 hover:border-white w-full h-full">
-                  {/* Hover Reveal Fill */}
-                  <div className="absolute inset-0 w-full h-full bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-                  
-                  <div className="relative z-10 flex items-start gap-4">
-                    <div className="w-12 h-12 bg-dark-950 border border-gold-500/30 flex items-center justify-center flex-shrink-0 group-hover:border-dark-950/20 group-hover:bg-dark-950/10 transition-all duration-500">
-                      <Icon className="w-5 h-5 text-gold-500 group-hover:text-dark-950 transition-colors duration-500" />
+                <Link to="/contact" className="card card-interactive block py-5 px-6 cursor-pointer w-full h-full">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-dark-950 border border-gold-500/30 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-gold-500" />
                     </div>
                     <div className="pt-1">
-                      <h3 className="font-black uppercase tracking-widest text-white text-sm mb-1 group-hover:text-dark-950 transition-colors duration-500 leading-tight">
+                      <h3 className="font-black uppercase tracking-widest text-white text-sm mb-1 leading-tight">
                         {feature.name}
                       </h3>
-                      <p className="text-xs text-slate-400 group-hover:text-dark-950/70 transition-colors duration-500 leading-tight">
+                      <p className="text-xs text-slate-400 leading-tight">
                         {feature.desc}
                       </p>
                     </div>
-                  </div>
-                  
-                  {/* Interactive Arrow */}
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 z-10">
-                    <ChevronRight className="w-5 h-5 text-dark-950" />
                   </div>
                 </Link>
               </motion.div>

@@ -49,7 +49,7 @@ export default function PaymentsPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="bg-dark-900 border border-white/5 p-8 rounded-sm flex flex-col items-center text-center"
+                    className="card p-8 flex flex-col items-center text-center"
                   >
                     <div className="w-14 h-14 bg-gold-500/10 flex items-center justify-center rounded-sm mb-6 text-gold-500">
                       <Icon className="w-6 h-6" />
@@ -61,17 +61,16 @@ export default function PaymentsPage() {
               })}
             </div>
 
-            <div className="bg-dark-900 border border-gold-500/20 p-8 md:p-12 rounded-sm text-center relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-gold-500/5 rounded-full blur-[80px] pointer-events-none" />
+            <div className="card card-glow p-8 md:p-12 text-center">
               <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white mb-4 relative z-10">Ready to Pay or Set Up a Plan?</h2>
               <p className="text-slate-400 max-w-xl mx-auto mb-8 relative z-10">
                 To make a payment or discuss your payment plan, please call us directly. All fees and payment arrangements follow Pennsylvania regulations, and everything is handled confidentially.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-                <a href={siteConfig.phoneHref} className="bg-gold-500 text-black px-8 py-4 font-black uppercase tracking-widest text-sm flex items-center justify-center gap-2 hover:bg-white transition-colors">
+                <a href={siteConfig.phoneHref} className="btn btn-primary btn-lg">
                   <Phone className="w-4 h-4" /> Call {siteConfig.phoneDisplay}
                 </a>
-                <a href={siteConfig.smsHref} className="border border-white/20 text-white px-8 py-4 font-black uppercase tracking-widest text-sm flex items-center justify-center gap-2 hover:border-gold-500 hover:text-gold-500 transition-colors">
+                <a href={siteConfig.smsHref} className="btn btn-outline btn-lg">
                   <MessageSquare className="w-4 h-4" /> Text Us
                 </a>
               </div>

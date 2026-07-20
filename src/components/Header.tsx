@@ -74,7 +74,7 @@ export default function Header() {
       <div className="w-full flex items-center justify-between">
         {/* Logo */}
           <Link to="/" className="leading-none block">
-            <span className="text-xl md:text-2xl xl:text-3xl font-black uppercase tracking-tighter">CHAMBERSBURG <span className="text-gold-500">BAIL BONDS</span></span>
+            <span className="font-display text-xl md:text-2xl xl:text-3xl font-black uppercase tracking-tighter">CHAMBERSBURG <span className="text-gold-500">BAIL BONDS</span></span>
             <p className="text-[10px] uppercase tracking-[0.2em] opacity-60 text-white">Franklin County, PA · 24/7</p>
           </Link>
 
@@ -124,12 +124,7 @@ export default function Header() {
 
         {/* Action */}
         <div className="hidden xl:flex flex-col items-end gap-1">
-          <Link to="/contact" className="relative overflow-hidden group bg-gold-500 text-black px-6 py-3 font-black text-xs uppercase tracking-tighter transition-all flex items-center">
-            <div className="absolute inset-0 w-full h-full bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
-            <span className="relative z-10 flex items-center gap-2">Find Help Now</span>
-            <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-            <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-          </Link>
+          <Link to="/contact" className="btn btn-primary btn-md flex items-center">Find Help Now</Link>
           <a href={siteConfig.phoneHref} className="text-[11px] text-white/70 hover:text-gold-500 uppercase tracking-widest font-bold transition-colors flex items-center gap-1">
             <Phone className="w-3 h-3" /> {siteConfig.phoneDisplay}
           </a>
@@ -167,7 +162,7 @@ export default function Header() {
               {/* Menu Header */}
               <div className="flex justify-between items-center mb-12">
                 <Link to="/" onClick={() => setMobileMenuOpen(false)} className="leading-none block">
-                  <span className="text-lg font-black uppercase tracking-tighter text-white">CHAMBERSBURG <span className="text-gold-500">BAIL BONDS</span></span>
+                  <span className="font-display text-lg font-black uppercase tracking-tighter text-white">CHAMBERSBURG <span className="text-gold-500">BAIL BONDS</span></span>
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
@@ -243,14 +238,7 @@ export default function Header() {
                   <a href={siteConfig.phoneHref} className="text-3xl font-black text-gold-500 mb-8 block hover:text-white transition-colors">{siteConfig.phoneDisplay}</a>
 
                   <div className="flex flex-col items-center gap-2">
-                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="relative overflow-hidden group bg-transparent border-2 border-gold-500 text-gold-500 px-6 py-5 w-full font-black text-sm uppercase tracking-widest transition-all flex items-center justify-center">
-                      <div className="absolute inset-0 w-full h-full bg-gold-500 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out z-0"></div>
-                      <span className="relative z-10 group-hover:text-black transition-colors duration-500">
-                        Find Help Now
-                      </span>
-                      <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-white/40 group-hover:border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-                      <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-white/40 group-hover:border-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:scale-125"></div>
-                    </Link>
+                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="btn btn-outline btn-lg w-full flex items-center justify-center">Find Help Now</Link>
                   </div>
                 </div>
               </div>

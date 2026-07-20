@@ -58,7 +58,7 @@ export default function AboutPage() {
                 <strong className="text-white">{siteConfig.name}</strong> was founded on a simple principle: families going through an arrest deserve clear answers, honest guidance, and fast action — not confusion, pressure, or hidden costs. We're a local team that lives and works in this community, and we treat every client the way we'd want our own family treated.
               </p>
 
-              <div className="bg-white/5 border border-white/10 p-8 rounded-sm relative overflow-hidden group mt-12">
+              <div className="card p-8 overflow-hidden mt-12">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 rounded-full blur-[50px] pointer-events-none" />
                 <h2 className="text-2xl font-black uppercase tracking-tighter text-white mb-4 flex items-center gap-3">
                   <ShieldCheck className="text-gold-500 w-6 h-6" /> What Makes Us Different
@@ -91,7 +91,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="sticky top-32 space-y-6"
               >
-                <div className="bg-dark-900 border border-gold-500/20 p-8 rounded-sm">
+                <div className="card p-8">
                   <h3 className="text-xl font-black uppercase tracking-tighter text-white mb-6">What You Can Expect</h3>
                   <ul className="space-y-6">
                     <li className="flex items-center gap-4 group">

@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { DollarSign, Heart, Shield } from 'lucide-react';
+import SectionGrid from './SectionGrid';
 
 export default function Reviews() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -48,6 +49,7 @@ export default function Reviews() {
 
   return (
     <section className="py-32 px-4 relative overflow-hidden border-t border-white/5 bg-dark-950">
+      <SectionGrid drift />
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
         
         {/* Header & Intro */}
@@ -106,7 +108,7 @@ export default function Reviews() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.2 }}
-                  className="flex items-center gap-6 bg-dark-900 border border-white/5 p-8 relative group hover:border-gold-500/50 transition-colors duration-300"
+                  className="card card-interactive flex items-center gap-6 p-8"
                 >
                   <div className="w-14 h-14 bg-gold-500/10 flex flex-shrink-0 items-center justify-center rounded-sm">
                     {item.icon}
@@ -124,7 +126,7 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-dark-900 border border-white/5 p-8 relative overflow-hidden mt-4"
+              className="card card-glow p-8 overflow-hidden mt-4"
             >
               <div className="absolute top-0 left-0 w-1 h-full bg-gold-500"></div>
               <div className="space-y-4">

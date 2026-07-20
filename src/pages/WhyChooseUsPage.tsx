@@ -53,7 +53,7 @@ export default function WhyChooseUsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.06 }}
-                  className="bg-dark-900 border border-white/5 p-8 rounded-sm flex items-start gap-5 hover:border-gold-500/40 transition-colors"
+                  className="card card-interactive p-8 flex items-start gap-5"
                 >
                   <div className="w-12 h-12 bg-gold-500/10 flex items-center justify-center rounded-sm flex-shrink-0 text-gold-500">
                     <Icon className="w-5 h-5" />

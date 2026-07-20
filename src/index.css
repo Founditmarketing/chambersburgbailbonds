@@ -12,7 +12,7 @@
   --color-black: #0b101d;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Anton", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -20,12 +20,213 @@
     --gold: #c36222;
     --dark: #1a2642;
   }
+
+  /* Title text across the site uses the display font */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Apply the display font to brand wordmarks / titles that aren't headings */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Cleaner, thinner title weight.
+   Unlayered so it overrides the inline `font-black` (900) utility on titles. */
+h1, h2, h3, h4, h5, h6,
+.font-display {
+  font-weight: 600;
 }
 
 .bg-pattern {
   background-image: linear-gradient(rgba(195, 98, 34, 0.05) 1px, transparent 1px),
   linear-gradient(90deg, rgba(195, 98, 34, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* ============================================================
+   Subtle "cool" grid effect — layered fine + accent grids,
+   radially masked so they fade out and never dominate.
+   Used on select section backgrounds and the loading screen.
+   ============================================================ */
+.section-grid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.section-grid::before,
+.section-grid::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+}
+/* Fine, cool-toned grid */
+.section-grid::before {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, #000, transparent 72%);
+          mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, #000, transparent 72%);
+}
+/* Coarser burnt-orange accent grid */
+.section-grid::after {
+  background-image:
+    linear-gradient(to right, rgba(195, 98, 34, 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(195, 98, 34, 0.10) 1px, transparent 1px);
+  background-size: 120px 120px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000, transparent 68%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000, transparent 68%);
+}
+/* Optional slow drift on the accent grid for a bit of life */
+.section-grid--drift::after {
+  animation: grid-drift 26s linear infinite;
+}
+@keyframes grid-drift {
+  to { background-position: 120px 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-grid--drift::after { animation: none; }
+}
+
+/* Soft brand glow used behind the loading-screen wordmark */
+.loader-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42rem;
+  height: 42rem;
+  max-width: 120vw;
+  max-height: 120vw;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(195, 98, 34, 0.16), transparent 62%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   Design system — buttons & cards (redesigned language)
+   Departs from the original template's bracket + hover-wipe motif:
+   soft rounded shapes, gradient/glow primary, lift-on-hover, no brackets.
+   ============================================================ */
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-align: center;
+  border-radius: 0.75rem;               /* rounded-xl */
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.3s ease,
+              background-color 0.3s ease, border-color 0.3s ease, color 0.25s ease;
+}
+.btn-sm { padding: 0.625rem 1rem;    font-size: 0.6875rem; }
+.btn-md { padding: 0.875rem 1.5rem;  font-size: 0.75rem; }
+.btn-lg { padding: 1.125rem 2rem;    font-size: 0.875rem; }
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(135deg, #d97f3f 0%, #c36222 45%, #9c4d1a 100%);
+  box-shadow: 0 10px 24px -10px rgba(195, 98, 34, 0.75),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px -8px rgba(195, 98, 34, 0.9),
+              inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.btn-outline {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(4px);
+}
+.btn-outline:hover {
+  transform: translateY(-2px);
+  border-color: rgba(195, 98, 34, 0.7);
+  background: rgba(195, 98, 34, 0.1);
+  color: #f3b184;
+}
+
+/* For use on light / orange backgrounds */
+.btn-dark {
+  color: #fff;
+  background: #0e1526;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.85);
+}
+.btn-dark:hover {
+  transform: translateY(-2px);
+  background: #1a2642;
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.9);
+}
+
+.btn-ghost { color: #c36222; background: transparent; }
+.btn-ghost:hover { color: #fff; }
+
+.btn:active { transform: translateY(0) scale(0.97); }
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #0e1526, 0 0 0 4px rgba(195, 98, 34, 0.75);
+}
+
+/* ---- Cards ---- */
+.card {
+  position: relative;
+  border-radius: 1rem;                  /* rounded-2xl */
+  background: linear-gradient(to bottom, #1a2642, #0e1526);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.9);
+}
+.card-interactive {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-interactive:hover {
+  transform: translateY(-6px);
+  border-color: rgba(195, 98, 34, 0.45);
+  box-shadow: 0 26px 50px -20px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(195, 98, 34, 0.1);
+}
+/* Optional soft brand glow in a card's top-right corner */
+.card-glow::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 8rem; height: 8rem;
+  background: radial-gradient(circle at top right, rgba(195, 98, 34, 0.22), transparent 70%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn:hover, .btn:active,
+  .card-interactive, .card-interactive:hover { transform: none; }
+}
+
+/* Trust-ticker marquee (Banner) — two copies of the track translate -50% for a seamless loop */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-scroll 45s linear infinite;
+  will-change: transform;
+}
+/* Pause when the visitor hovers the strip */
+.marquee-group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    transform: none;
+  }
 }
 
 /* Leaflet Dark Map Overrides */

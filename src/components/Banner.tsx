@@ -1,68 +1,52 @@
-import { Clock, Shield, Unlock, MapPin } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Clock, BadgeCheck, Zap, MapPin, Lock, Wallet, HeartHandshake } from 'lucide-react';
+import type { ReactNode } from 'react';
+
+interface TrustPoint {
+  icon: ReactNode;
+  label: string;
+}
 
 export default function Banner() {
-  const stats = [
-    {
-      icon: <Clock className="w-5 h-5 text-gold-500" strokeWidth={2} />,
-      title: "24/7 Availability",
-      desc: "Emergency dispatch around the clock"
-    },
-    {
-      icon: <Shield className="w-5 h-5 text-gold-500" strokeWidth={2} />,
-      title: "Licensed & Bonded",
-      desc: "Vetted professionals you can trust"
-    },
-    {
-      icon: <Unlock className="w-5 h-5 text-gold-500" strokeWidth={2} />,
-      title: "Fast, Secure Release",
-      desc: "Swift processing and protocols"
-    },
-    {
-      icon: <MapPin className="w-5 h-5 text-gold-500" strokeWidth={2} />,
-      title: "Local Coverage",
-      desc: "Serving Franklin County & Beyond"
-    }
+  const points: TrustPoint[] = [
+    { icon: <Clock className="w-4 h-4" strokeWidth={2.25} />, label: '24/7 Availability' },
+    { icon: <BadgeCheck className="w-4 h-4" strokeWidth={2.25} />, label: 'Licensed & Bonded' },
+    { icon: <Zap className="w-4 h-4" strokeWidth={2.25} />, label: 'Fast, Secure Release' },
+    { icon: <MapPin className="w-4 h-4" strokeWidth={2.25} />, label: 'Franklin County & Beyond' },
+    { icon: <Lock className="w-4 h-4" strokeWidth={2.25} />, label: '100% Confidential' },
+    { icon: <Wallet className="w-4 h-4" strokeWidth={2.25} />, label: 'Flexible Payment Plans' },
+    { icon: <HeartHandshake className="w-4 h-4" strokeWidth={2.25} />, label: 'Respectful & Judgment-Free' },
   ];
 
-  // Duplicate the array to create a seamless infinite loop
-  const repeatedStats = [...stats, ...stats, ...stats, ...stats];
+  // Render the sequence twice so the -50% translate loops seamlessly.
+  const track = [...points, ...points];
 
   return (
-    <section className="relative w-full z-20 bg-dark-950 border-y border-white/5 overflow-hidden py-5">
-      {/* Gradient masks for smooth fade on edges */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-dark-950 to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-dark-950 to-transparent z-10 pointer-events-none"></div>
+    <section
+      aria-label="Why families trust Chambersburg Bail Bonds"
+      className="marquee-group relative w-full z-20 border-y border-gold-500/15 bg-gradient-to-r from-dark-900 via-dark-950 to-dark-900 overflow-hidden py-3.5"
+    >
+      {/* Edge fades */}
+      <div className="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-dark-950 to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-dark-950 to-transparent z-10 pointer-events-none" />
 
-      <motion.div 
-        animate={{ x: ["0%", "-50%"] }} 
-        transition={{ ease: "linear", duration: 35, repeat: Infinity }}
-        className="flex w-max"
-      >
-        {repeatedStats.map((stat, idx) => (
-          <div key={idx} className="flex items-center pr-12 group cursor-default">
-            <div className="flex items-center gap-5">
-              <div className="w-12 h-12 border border-gold-500/20 flex items-center justify-center shrink-0 group-hover:border-gold-500/60 transition-colors bg-dark-900 relative">
-                {/* Geometric Corner Embellishments */}
-                <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-gold-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-gold-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                {stat.icon}
-              </div>
-              <div className="flex flex-col">
-                <p className="text-white text-sm font-black uppercase tracking-widest whitespace-nowrap leading-tight mb-1">{stat.title}</p>
-                <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold whitespace-nowrap leading-tight">{stat.desc}</p>
-              </div>
-            </div>
-            
-            {/* Separator Accent */}
-            <div className="flex items-center ml-12 opacity-30">
-              <div className="w-1 h-1 bg-gold-500 rotate-45"></div>
-              <div className="w-12 h-px bg-gold-500/50"></div>
-              <div className="w-1 h-1 bg-gold-500 rotate-45"></div>
+      <div className="flex w-max animate-marquee">
+        {track.map((point, idx) => (
+          <div key={idx} className="flex items-center" aria-hidden={idx >= points.length}>
+            {/* Diamond separator */}
+            <span className="mx-6 md:mx-8 h-1.5 w-1.5 rotate-45 bg-gold-500/70 shadow-[0_0_8px_rgba(195,98,34,0.6)]" />
+
+            {/* Trust point */}
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold-500/10 ring-1 ring-gold-500/30 text-gold-500 shrink-0">
+                {point.icon}
+              </span>
+              <span className="text-white text-xs md:text-[13px] font-black uppercase tracking-[0.18em] whitespace-nowrap">
+                {point.label}
+              </span>
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

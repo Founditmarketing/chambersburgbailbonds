@@ -163,7 +163,7 @@ export default function ServicePage() {
               transition={{ duration: 0.8 }}
               className="lg:col-span-2"
             >
-              <div className="bg-dark-900 border border-white/5 p-8 md:p-12 rounded-sm shadow-xl shadow-black/50 relative overflow-hidden">
+              <div className="card p-8 md:p-12 overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[80px] pointer-events-none" />
                 {service.paragraphs.map((p, idx) => renderParagraph(p, idx))}
               </div>
@@ -178,9 +178,7 @@ export default function ServicePage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="sticky top-32 space-y-6"
               >
-                <div className="bg-dark-900 border border-gold-500/20 p-8 rounded-sm relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-[40px] pointer-events-none" />
-
+                <div className="card card-glow p-8">
                   <HelpCircle className="w-10 h-10 text-gold-500 mb-6" />
                   <h3 className="text-2xl font-black uppercase tracking-tighter text-white mb-4">Need Help Now?</h3>
                   <p className="text-slate-400 text-sm leading-relaxed mb-8">
@@ -188,8 +186,8 @@ export default function ServicePage() {
                   </p>
 
                   <div className="space-y-4">
-                    <a href={siteConfig.phoneHref} className="flex items-center gap-4 group p-4 border border-white/10 hover:border-gold-500/50 transition-colors rounded-sm bg-dark-950">
-                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition-colors text-gold-500 group-hover:text-black">
+                    <a href={siteConfig.phoneHref} className="card card-interactive flex items-center gap-4 group p-4">
+                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 text-gold-500">
                         <Phone className="w-4 h-4" />
                       </div>
                       <div>
@@ -197,8 +195,8 @@ export default function ServicePage() {
                         <p className="font-bold text-white group-hover:text-gold-500 transition-colors">{siteConfig.phoneDisplay}</p>
                       </div>
                     </a>
-                    <a href={siteConfig.smsHref} className="flex items-center gap-4 group p-4 border border-white/10 hover:border-gold-500/50 transition-colors rounded-sm bg-dark-950">
-                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition-colors text-gold-500 group-hover:text-black">
+                    <a href={siteConfig.smsHref} className="card card-interactive flex items-center gap-4 group p-4">
+                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 text-gold-500">
                         <MessageSquare className="w-4 h-4" />
                       </div>
                       <div>
@@ -209,7 +207,7 @@ export default function ServicePage() {
                   </div>
                 </div>
 
-                <div className="bg-dark-900 border border-white/5 p-8 rounded-sm">
+                <div className="card p-8">
                   <h3 className="text-lg font-black uppercase tracking-tighter text-white mb-4">More Services</h3>
                   <ul className="space-y-3">
                     {Object.entries(servicesData).map(([key, data]) => (

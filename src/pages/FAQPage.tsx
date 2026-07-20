@@ -105,7 +105,7 @@ export default function FAQPage() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-dark-900 border border-white/5 overflow-hidden rounded-sm group transition-all"
+                  className="card card-interactive overflow-hidden group"
                 >
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -138,9 +138,7 @@ export default function FAQPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="sticky top-32 space-y-6"
               >
-                <div className="bg-dark-900 border border-gold-500/20 p-8 rounded-sm relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-[40px] pointer-events-none" />
-
+                <div className="card card-glow p-8">
                   <HelpCircle className="w-10 h-10 text-gold-500 mb-6" />
                   <h2 className="text-2xl font-black uppercase tracking-tighter text-white mb-4">Still Have Questions?</h2>
                   <p className="text-slate-400 text-sm leading-relaxed mb-8">
@@ -148,8 +146,8 @@ export default function FAQPage() {
                   </p>
 
                   <div className="space-y-4">
-                    <a href={siteConfig.phoneHref} className="flex items-center gap-4 group p-4 border border-white/10 hover:border-gold-500/50 transition-colors rounded-sm bg-dark-950">
-                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition-colors text-gold-500 group-hover:text-black">
+                    <a href={siteConfig.phoneHref} className="card card-interactive flex items-center gap-4 group p-4">
+                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 text-gold-500">
                         <Phone className="w-4 h-4" />
                       </div>
                       <div>
@@ -157,8 +155,8 @@ export default function FAQPage() {
                         <p className="font-bold text-white group-hover:text-gold-500 transition-colors">{siteConfig.phoneDisplay}</p>
                       </div>
                     </a>
-                    <a href={siteConfig.smsHref} className="flex items-center gap-4 group p-4 border border-white/10 hover:border-gold-500/50 transition-colors rounded-sm bg-dark-950">
-                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition-colors text-gold-500 group-hover:text-black">
+                    <a href={siteConfig.smsHref} className="card card-interactive flex items-center gap-4 group p-4">
+                      <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center flex-shrink-0 text-gold-500">
                         <MessageSquare className="w-4 h-4" />
                       </div>
                       <div>
