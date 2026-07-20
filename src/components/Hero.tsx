@@ -136,7 +136,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl"
+          className="max-w-4xl text-center lg:text-left"
         >
           <div className="mb-6 inline-flex items-center gap-2.5 w-max rounded-full border border-green-500/30 bg-green-500/10 backdrop-blur-sm pl-2 pr-3.5 py-1.5">
             <span className="relative flex h-2.5 w-2.5">
@@ -147,16 +147,16 @@ export default function Hero() {
             <span className="h-3 w-px bg-white/20"></span>
             <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.25em] text-white/70">24/7 Dispatch</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-[4.25rem] xl:text-[5rem] font-black uppercase tracking-tighter text-white mb-5 leading-[0.95]">
+          <h1 className="text-[2.5rem] md:text-5xl lg:text-[4.25rem] xl:text-[5rem] font-black uppercase tracking-tighter text-white mb-5 leading-[0.95]">
             Get Your Loved One<br />
             <span className="text-gold-500">Home, Fast.</span>
           </h1>
-          <p className="max-w-lg mb-8">
+          <p className="max-w-lg mx-auto lg:mx-0 mb-8">
             <strong className="block text-white font-semibold text-lg md:text-xl mb-1.5">Fast answers. Clear steps. Help right now.</strong>
             <span className="text-sm md:text-base text-slate-300 leading-relaxed">Confidential, 24/7 bail help across Franklin County &amp; beyond.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <div className="flex flex-col sm:flex-row gap-4 items-center sm:justify-center lg:justify-start">
             <a href={siteConfig.phoneHref} className="btn btn-primary btn-lg w-full sm:w-auto"><Phone className="w-4 h-4" /> Call {siteConfig.phoneDisplay}</a>
             <a href={siteConfig.smsHref} className="btn btn-outline btn-lg w-full sm:w-auto"><MessageSquare className="w-4 h-4" /> Text Us</a>
           </div>
